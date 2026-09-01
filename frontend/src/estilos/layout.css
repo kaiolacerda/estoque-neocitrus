@@ -1,0 +1,279 @@
+@import './variaveis.css';
+
+/* Estrutura geral do aplicativo: barra superior (logo, navegação centralizada
+   e conta do usuário) e conteúdo abaixo dela. Em telas estreitas a navegação
+   vira um menu suspenso acionado pelo botão de hambúrguer. */
+
+.aplicativo {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--fundo);
+}
+
+.menu-lateral {
+  position: relative;
+  z-index: 20;
+  background: var(--verde-escuro);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 24px;
+}
+
+.menu-lateral__marca {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  min-width: 0;
+}
+
+.menu-lateral__marca--clicavel {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-lateral__marca-logo {
+  width: 44px;
+  height: auto;
+}
+
+.menu-lateral__alternar {
+  display: none;
+}
+
+.menu-lateral__navegacao {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.menu-lateral__navegacao button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: left;
+  padding: 9px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.menu-lateral__navegacao button svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.menu-lateral__navegacao button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.menu-lateral__navegacao button.ativo {
+  background: var(--verde-medio);
+  color: #ffffff;
+}
+
+/* ---------- Conta do usuário (avatar compacto + dropdown) ---------- */
+.menu-lateral__conta {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.menu-lateral__conta-botao {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 6px 8px 6px 6px;
+  border-radius: 20px;
+  cursor: pointer;
+  max-width: 100%;
+}
+
+.menu-lateral__conta-botao:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.menu-lateral__conta-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--verde-medio);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.menu-lateral__conta-nome {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+
+.menu-lateral__conta-chevron {
+  color: rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+}
+
+.menu-lateral__conta-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 220px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(18, 30, 20, 0.16);
+  padding: 8px;
+  z-index: 30;
+}
+
+.menu-lateral__conta-email {
+  padding: 6px 10px 10px;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: var(--texto-suave);
+  border-bottom: 1px solid var(--borda);
+  word-break: break-all;
+}
+
+.menu-lateral__conta-dropdown button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--vermelho);
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+}
+
+.menu-lateral__conta-dropdown button:hover {
+  background: var(--superficie-2);
+}
+
+.conteudo-principal {
+  padding: 32px 40px;
+  width: 100%;
+}
+
+@media (max-width: 1180px) {
+  .menu-lateral {
+    padding: 10px 20px;
+    gap: 12px;
+  }
+
+  .conteudo-principal {
+    padding: 24px 20px;
+  }
+}
+
+/* Abaixo desse ponto, logo + 4 links + conta não cabem mais numa única
+   linha — a navegação vira um menu suspenso acionado pelo botão de
+   hambúrguer. A conta do usuário continua sempre visível, compacta. */
+@media (max-width: 900px) {
+  .menu-lateral {
+    padding: 10px 16px;
+  }
+
+  .menu-lateral__marca {
+    flex: initial;
+  }
+
+  .menu-lateral__marca-logo {
+    width: 40px;
+  }
+
+  .menu-lateral__alternar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    color: #ffffff;
+    background: none;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    order: 1;
+  }
+
+  .menu-lateral__alternar:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .menu-lateral__alternar svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .menu-lateral--aberto .menu-lateral__navegacao {
+    display: flex;
+  }
+
+  .menu-lateral__navegacao {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    flex: initial;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 8px 16px 16px;
+    background: var(--verde-escuro);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.18);
+  }
+
+  .menu-lateral__navegacao button {
+    width: 100%;
+  }
+
+  .menu-lateral__conta {
+    flex: initial;
+    order: 2;
+  }
+
+  .menu-lateral__conta-nome {
+    display: none;
+  }
+
+  .conteudo-principal {
+    padding: 16px;
+    max-width: none;
+  }
+}

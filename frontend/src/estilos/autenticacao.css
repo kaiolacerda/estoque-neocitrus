@@ -1,0 +1,70 @@
+@import './variaveis.css';
+
+/* Estilos exclusivos da tela de login */
+
+.pagina-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('../assets/fundoimagem.png') center center / cover no-repeat;
+  padding: 24px;
+}
+
+@media (max-width: 480px) {
+  .pagina-login {
+    background: url('../assets/telalogin.png') center center / cover no-repeat;
+  }
+}
+
+.cartao-login {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 32px;
+  width: 380px;
+  max-width: 100%;
+  text-align: center;
+  box-shadow: 0 12px 32px rgba(18, 30, 20, 0.25);
+}
+
+.cartao-login__logo {
+  height: 72px;
+  width: auto;
+  margin-bottom: 20px;
+}
+
+.cartao-login__titulo {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0 0 6px;
+  color: var(--texto);
+}
+
+.cartao-login__subtitulo {
+  color: var(--texto-suave);
+  font-size: 13.5px;
+  margin: 0 0 24px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.cartao-login form {
+  text-align: left;
+}
+
+@media (max-width: 480px) {
+  .pagina-login {
+    padding: 16px;
+  }
+
+  .cartao-login {
+    padding: 24px 20px;
+  }
+
+  .cartao-login__logo {
+    height: 60px;
+    margin-bottom: 16px;
+  }
+}

@@ -1,0 +1,132 @@
+@import './variaveis.css';
+
+/* Estilos exclusivos da tela de Produtos (resumo de venda calculada) */
+
+.resumo-venda {
+  background: var(--superficie-2);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 12.5px;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--texto-suave);
+}
+
+.resumo-venda strong {
+  color: var(--texto);
+  font-family: var(--fonte-mono);
+}
+
+.produtos__cabecalho {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.produtos__acoes {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.produtos__acoes-tabela {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+@media (max-width: 480px) {
+  .produtos__cabecalho {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .produtos__acoes {
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .produtos__acoes .botao {
+    flex: 1 1 140px;
+  }
+
+  .produtos__acoes-tabela {
+    flex-wrap: wrap;
+  }
+
+  .resumo-venda {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .modal--produto {
+    padding: 16px;
+  }
+
+  .modal--produto .modal__titulo {
+    margin-bottom: 10px;
+  }
+
+  .modal--produto .campo {
+    margin-bottom: 8px;
+  }
+
+  .modal--produto .campo label {
+    min-height: 0;
+    margin-bottom: 3px;
+  }
+
+  .modal--produto .linha-campos {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  .modal--produto .linha-campos .campo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal--produto .linha-campos .campo label {
+    min-height: 32px;
+  }
+
+  .modal--produto .seletor-tipo {
+    flex-direction: row;
+    gap: 6px;
+  }
+
+  .modal--produto .seletor-tipo button {
+    padding: 8px 8px;
+    font-size: 12.5px;
+  }
+
+  .modal--produto .seletor-tipo button span {
+    font-size: 10px;
+  }
+
+  .modal--produto .campo__ajuda {
+    font-size: 10.5px;
+    margin-top: 2px;
+  }
+
+  .modal--produto .resumo-venda {
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+
+  .modal--produto .modal__acoes {
+    margin-top: 12px;
+  }
+}
+
+/* Só 1 cartão indicador nessa página — não estica em 4 colunas como o Painel/Vendas */
+.linha-indicadores.produtos__indicadores {
+  grid-template-columns: minmax(200px, 260px);
+}

@@ -1,0 +1,458 @@
+@import './variaveis.css';
+ 
+/* Estilos compartilhados entre todas as telas do sistema:
+   botões, tabelas, cartões, modais, badges e mensagens. */
+ 
+* {
+  box-sizing: border-box;
+}
+ 
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+ 
+body {
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte-corpo);
+  -webkit-font-smoothing: antialiased;
+}
+ 
+button {
+  font-family: inherit;
+}
+ 
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--verde-agua);
+  outline-offset: 2px;
+}
+ 
+.titulo-pagina {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  margin: 0 0 4px;
+}
+ 
+.subtitulo-pagina {
+  color: var(--texto-suave);
+  font-size: 14px;
+  margin: 0 0 28px;
+}
+ 
+/* ---------- Cartões de indicadores (KPI) ---------- */
+.linha-indicadores {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+ 
+.cartao-indicador {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+  overflow: hidden;
+}
+ 
+.cartao-indicador__texto {
+  min-width: 0;
+  flex: 1;
+}
+ 
+.cartao-indicador__rotulo {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--texto-suave);
+  margin-bottom: 10px;
+}
+ 
+.cartao-indicador__valor {
+  font-family: var(--fonte-mono);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--texto);
+  overflow-wrap: anywhere;
+}
+ 
+.cartao-indicador__valor.alerta {
+  color: var(--ambar);
+}
+ 
+.cartao-indicador__valor.positivo {
+  color: var(--verde-agua);
+}
+ 
+.cartao-indicador__icone {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 10px;
+  background: var(--verde-claro);
+  color: var(--verde-medio);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.cartao-indicador__icone svg {
+  width: 20px;
+  height: 20px;
+}
+ 
+/* ---------- Seção (bloco com cabeçalho + conteúdo) ---------- */
+.secao {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+ 
+.secao__cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--borda);
+}
+ 
+.secao__titulo {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--texto);
+}
+ 
+/* ---------- Botões ---------- */
+.botao {
+  border: 1px solid var(--borda);
+  background: var(--superficie);
+  color: var(--texto);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+ 
+.botao:hover {
+  border-color: var(--verde-agua);
+}
+ 
+.botao:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+ 
+.botao.primario {
+  background: var(--verde-medio);
+  border-color: var(--verde-medio);
+  color: #ffffff;
+  font-weight: 600;
+}
+ 
+.botao.primario:hover {
+  filter: brightness(1.08);
+}
+ 
+.botao.perigo {
+  color: var(--vermelho);
+}
+ 
+.botao.perigo:hover {
+  border-color: var(--vermelho);
+}
+ 
+/* "Marcar como pago" — visual neutro/contornado (mesmo padrão do .perigo),
+   pra deixar claro que a ação ainda NÃO aconteceu, precisa de confirmação. */
+.botao.sucesso {
+  color: var(--verde-agua);
+}
+ 
+.botao.sucesso:hover {
+  border-color: var(--verde-agua);
+}
+ 
+.botao.pequeno {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+ 
+.botao.bloco {
+  width: 100%;
+}
+ 
+/* ---------- Tabelas ---------- */
+ 
+/* Sempre habilitado (não só no mobile) — qualquer tabela larga demais pra
+   caber na tela rola por dentro do próprio container, em vez de ser cortada
+   ou estourar o layout da página. */
+.tabela-responsiva {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+ 
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+ 
+thead th {
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--texto-suave);
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--borda);
+  background: var(--superficie-2);
+}
+ 
+tbody td {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--borda);
+  font-size: 13.5px;
+  vertical-align: middle;
+  color: var(--texto);
+}
+ 
+tbody tr:last-child td {
+  border-bottom: none;
+}
+ 
+.mono {
+  font-family: var(--fonte-mono);
+}
+ 
+.texto-suave {
+  color: var(--texto-suave);
+}
+ 
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+ 
+.badge.baixo {
+  background: rgba(201, 134, 42, 0.15);
+  color: var(--ambar);
+}
+ 
+.badge.ok {
+  background: rgba(47, 158, 86, 0.14);
+  color: var(--verde-medio);
+}
+ 
+/* ---------- Estado vazio ---------- */
+.vazio {
+  padding: 48px 20px;
+  text-align: center;
+  color: var(--texto-suave);
+  font-size: 14px;
+}
+ 
+/* ---------- Modal ---------- */
+.fundo-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 30, 20, 0.45);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 40px 16px;
+  z-index: 50;
+}
+ 
+.modal {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 24px;
+  width: 420px;
+  max-width: 90vw;
+  margin: auto 0;
+  box-shadow: 0 12px 32px rgba(18, 30, 20, 0.12);
+}
+ 
+.modal__titulo {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 17px;
+  margin: 0 0 18px;
+  color: var(--texto);
+}
+ 
+.campo {
+  margin-bottom: 8px;
+}
+ 
+.campo label {
+  display: block;
+  min-height: 18px;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--texto-suave);
+  margin-bottom: 4px;
+}
+ 
+.campo input,
+.campo select {
+  width: 100%;
+  height: 38px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  color: var(--texto);
+  padding: 9px 10px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+ 
+.campo textarea {
+  width: 100%;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  color: var(--texto);
+  padding: 9px 10px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-family: inherit;
+  box-sizing: border-box;
+  resize: vertical;
+}
+ 
+.campo__opcional {
+  color: var(--texto-suave);
+  font-weight: 400;
+}
+ 
+.linha-campos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 12px;
+}
+ 
+.modal__acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+ 
+.faixa-erro {
+  background: rgba(192, 57, 43, 0.1);
+  color: var(--vermelho);
+  border: 1px solid rgba(192, 57, 43, 0.3);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+ 
+.faixa-sucesso {
+  background: rgba(47, 158, 86, 0.12);
+  color: var(--verde-medio);
+  border: 1px solid rgba(47, 158, 86, 0.3);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+ 
+.campo-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-size: 13.5px;
+}
+ 
+.campo-checkbox input {
+  width: auto;
+}
+ 
+@media (max-width: 480px) {
+  .titulo-pagina {
+    font-size: 23px;
+  }
+ 
+  .subtitulo-pagina {
+    margin-bottom: 20px;
+  }
+ 
+  .linha-indicadores {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+ 
+  .cartao-indicador {
+    padding: 16px;
+  }
+ 
+  .secao {
+    margin-bottom: 16px;
+  }
+ 
+  .secao__cabecalho {
+    padding: 14px 16px;
+  }
+ 
+  .tabela-responsiva table {
+    min-width: 620px;
+  }
+ 
+  thead th,
+  tbody td {
+    padding: 10px 14px;
+  }
+ 
+  .fundo-modal {
+    padding: 16px;
+  }
+ 
+  .modal {
+    width: 100%;
+    max-width: 100%;
+    padding: 18px;
+  }
+ 
+  .linha-campos {
+    grid-template-columns: 1fr;
+  }
+ 
+  .modal__acoes {
+    flex-wrap: wrap;
+  }
+ 
+  .modal__acoes .botao {
+    flex: 1 1 140px;
+  }
+}
+ 

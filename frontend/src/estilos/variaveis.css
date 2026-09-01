@@ -1,0 +1,21 @@
+:root {
+  /* Tema claro, inspirado na identidade visual da Neocitrus */
+  --fundo: #f3f7f4;
+  --superficie: #ffffff;
+  --superficie-2: #eef4ef;
+  --borda: #e0e8e1;
+  --texto: #1a2b1f;
+  --texto-suave: #6b7d70;
+
+  --verde-escuro: #123822;
+  --verde-medio: #1f6b3a;
+  --verde-claro: #e6f4ea;
+
+  --verde-agua: #2f9e56;
+  --ambar: #c9862a;
+  --vermelho: #c0392b;
+
+  --fonte-titulo: 'Space Grotesk', sans-serif;
+  --fonte-corpo: 'Inter', sans-serif;
+  --fonte-mono: 'JetBrains Mono', monospace;
+}
